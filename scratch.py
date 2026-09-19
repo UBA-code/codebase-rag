@@ -1,19 +1,25 @@
-import re
-from typing import List, Tuple
 
-def find_paragraphs(text: str) -> List[Tuple[int, int, str]]:
-    """
-    Find all non-empty paragraphs in text and return their:
-    (start_index, end_index, text)
-    """
-    results: List[Tuple[int, int, str]] = []
+from indexer.py_chunker import chunk_python
+code_sample = '''"""Docstring."""
 
-    for match in re.finditer(r"[^\n]+(?:\n[^\n]+)*", text):
-      results.append((match.start(), match.end(), match.group()))
-    return results
+def small_func_1():
+    return 1
 
+def small_func_2():
+    return 2
 
-# Test it with this sample:
-sample = "Intro to vLLM.\n\nHere is how to configure it."
-results = find_paragraphs(sample)
-print(results)
+def oversized_func():
+    # Let's create a long block
+    msg = "''' + ("X" * 120) + '''"
+    return msg
+'''
+
+# Use max_chunk_size = 80 so:
+# - Docstring and small_func_1 can group together
+# - oversized_func is forced to split across boundaries
+chunks = chunk_python(code_sample, max_chunk_size=80)
+
+for idx, c in enumerate(chunks):
+  s = c["first_character_index"]
+  e = c["last_character_index"]
+  print(f"Chunk {idx} [{s}:{e}] (len {e - s}):\n{repr(c['text'])}\n")
