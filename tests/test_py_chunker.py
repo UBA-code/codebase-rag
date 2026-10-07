@@ -1,4 +1,4 @@
-from indexer.py_chunker import chunk_python
+from src.indexer.py_chunker import chunk_python
 
 
 def test_chunk_python_functions_and_classes():

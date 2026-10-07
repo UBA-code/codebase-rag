@@ -1,6 +1,6 @@
-from indexer.md_chunker import split_oversized_paragraph
-from indexer.md_chunker import group_paragraphs_into_chunks
-from indexer.md_chunker import chunk_markdown
+from src.indexer.md_chunker import split_oversized_paragraph
+from src.indexer.md_chunker import group_paragraphs_into_chunks
+from src.indexer.md_chunker import chunk_markdown
 from typing import Any, Dict, List, Tuple
 import ast
 

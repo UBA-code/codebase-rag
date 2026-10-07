@@ -2,8 +2,8 @@ import os
 from pathlib import Path
 from typing import Any, Dict, List
 
-from indexer.md_chunker import chunk_markdown
-from indexer.py_chunker import chunk_python
+from src.indexer.md_chunker import chunk_markdown
+from src.indexer.py_chunker import chunk_python
 
 # Directories to ignore completely during traversal
 IGNORED_DIRS = {

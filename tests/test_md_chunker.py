@@ -1,4 +1,4 @@
-from indexer.md_chunker import chunk_markdown
+from src.indexer.md_chunker import chunk_markdown
 
 
 def test_chunk_markdown_basic():

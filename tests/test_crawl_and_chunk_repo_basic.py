@@ -1,5 +1,5 @@
 from pathlib import Path
-from indexer.crawler import crawl_and_chunk_repo
+from src.indexer.crawler import crawl_and_chunk_repo
 
 
 def test_crawl_and_chunk_repo_basic(tmp_path: Path):
